@@ -1,0 +1,18 @@
+#!/bin/sh
+
+git fetch --all --prune
+modified=`git status | grep modified | wc -l`
+if [ $modified -gt 0 ] ; then git stash ; fi
+branch=$(git branch | grep '*' | awk '{print $2}')
+git checkout master
+git pull --rebase origin master
+if [ $branch != 'master' ] ; then
+    # avoid deleteing develop branch for git-flow
+    if [ $(git branch --merged | grep -v develop | grep ${branch} | wc -l) -eq 1 ]
+    then
+        git branch -d ${branch}
+    else
+        git checkout ${branch}
+    fi
+fi
+if [ $modified -gt 0 ] ; then git stash pop ; fi

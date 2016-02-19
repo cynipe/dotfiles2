@@ -1,0 +1,48 @@
+# theme
+zplug 'mafredri/zsh-async'
+zplug 'sindresorhus/pure'
+
+zplug 'zsh-users/zsh-syntax-highlighting', nice:10
+
+# peco
+zplug 'peco/peco', as:command, from:gh-r \
+    | zplug 'mollifier/anyframe'
+zplug '~/.zsh/plugins/anyframe.zsh', from:local, if:'type anyframe-init'
+
+zplug 'rupa/z', of:z.sh, nice:10
+zplug 'Tarrasch/zsh-bd', of:bd.zsh
+
+zplug 'plugins/rbenv', from:oh-my-zsh
+zplug 'plugins/docker', from:oh-my-zsh
+zplug 'plugins/docker-compose', from:oh-my-zsh
+
+# custom scripts
+zplug '~/.zsh', of:'*.zsh', from:local
+zplug '~/src/dotfiles/bin', as:command, of:'*', from:local
+
+# git
+zplug 'plugins/git', from:oh-my-zsh
+zplug 'github/hub', as:command, from:gh-r, do:'$(~/.zplug/repos/github/hub alias -s)'
+
+#zplug 'motemen/ghq', as:command, from:gh-r
+#zplug 'monochromegane/the_platinum_searcher', as:command, from:gh-r, of:pt_linux_386/pt, file:pt
+#zplug 'gongo/9t', as:command, from:gh-r
+
+case ${OSTYPE} in
+    darwin*)
+        zplug 'plugins/osx', from:oh-my-zsh
+        zplug 'plugins/brew', from:oh-my-zsh
+        zplug 'plugins/brew-cask', from:oh-my-zsh
+        zplug 'plugins/tmux', from:oh-my-zsh
+        ;;
+    freebsd*)
+        ;;
+    linux*)
+        zplug 'plugins/gnu-utils', from:oh-my-zsh
+        if [ -f /etc/redhat-release ]; then
+            zplug 'plugins/yum', from:oh-my-zsh
+        elif [ -f /etc/debian_version ]; then
+            zplug 'plugins/debian', from:oh-my-zsh
+        fi
+        ;;
+esac

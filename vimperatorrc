@@ -1,0 +1,52 @@
+set toolbars=noaddons,nobookmarks,nomenu,navigation,tabs
+set status=input,location,tabcount,position
+set notabnumbers
+
+" no beeps!
+"set nobeep
+set visualbell
+hi Bell display: none;
+
+set smartcase
+set defsearch=google
+set autocomplete
+set complete=slh
+set focuscontent
+
+" 検索文字をハイライト
+set hlsearch
+"<C-[>の2回押しでハイライト消去
+noremap <ESC><ESC> :nohlsearch<CR><ESC>
+
+" 選択文字列のコピーを <C-c> に割り当て
+map <C-c> Y
+"j/kの移動量を3倍に増やす
+map j 8<C-e>
+map k 8<C-y>
+"J/Kに半ページスクロールを割り当て
+noremap J <C-d>
+noremap K <C-u>
+"h/lでタブ移動
+noremap h gT
+noremap l gt
+"<C-r>で再起動
+map <C-r> :restart<CR>
+
+"[[と]]でページをめくる。日本語ページ対応
+set nextpattern=\bnext\b,\bmore\b,next,^次(の)?ページ,\b次.*,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$,^次(へ|の|ペ),^続き,\bnext\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\bmore\b
+set previouspattern=\bprev|previous\b,prev,^前(の)?ページ,\b前.*,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$,^前(へ|の|ペ),^戻る,\bprev|previous\b,^<$,^(<<|«)$,^(<|«),(<|«)$
+
+" Plugins
+let g:plugin_loader_roots = "~/src/dotfiles/vimp/"
+let g:plugin_loader_plugins = "_libly,copy,feedSomeKeys_3,lookupDictionary"
+
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+
+ignorekeys add docs.google.com
+ignorekeys add feedly\\.com/index\\.html#latest
+ignorekeys add feedly\\.com/index\\.html#my
+ignorekeys add feedly\\.com/#latest
+ignorekeys add feedly\\.com/#my
+

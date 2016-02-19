@@ -1,0 +1,86 @@
+[[plugins]]
+repository = 'Shougo/unite.vim'
+depends = 'Shougo/neomru.vim'
+
+  [plugins.on_cmd]
+  name = 'Unite'
+  complete = 'customlist,unite#complete_source'
+
+[[plugins]]
+repository = 'Shougo/unite-outline'
+
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+depends = 'Shougo/context_filetype.vim'
+on_i = 1
+
+[[plugins]]
+repository = 'Shougo/neosnippet.vim'
+depends = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
+on_i = 1
+on_ft = 'snippet'
+on_unite = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
+
+[[plugins]]
+repository = 'Shougo/vimshell.vim'
+on_map = '<Plug>'
+
+  [plugins.on_cmd]
+  name = 'VimShell'
+  complete = 'customlist,vimshell#complete'
+
+[[plugins]]
+repository = 'vim-ruby/vim-ruby'
+on_map = '<Plug>'
+on_ft = 'ruby'
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repository = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repository = 'rcmdnk/vim-markdown'
+on_ft = ['markdown', 'mkd']
+
+[[plugins]]
+repository = 'mv/mv-vim-puppet'
+on_ft = 'puppet'
+
+[[plugins]]
+repository = 'kmnk/vim-unite-giti'
+
+  [[plugins.on_cmd]]
+  name = ['Giti', 'GitiDiff', 'GitiLog', 'GitiPushExpressly', 'GitiPull', 'GitiFetch', 'GitiWithConfirm', 'GitiPushWithSettingUpstream', 'GitiPullRebase', 'GitiPullExpressly', 'GitiLogLine', 'GitiPush', 'GitiDiffCached', 'GitiPullSquash']
+
+[[plugins]]
+repository = 'godlygeek/tabular'
+
+  [plugins.on_cmd]
+  name = 'Tabularize'
+  complete = 'customlist,<SID>CompleteTabularizeCommand'
+
+[[plugins]]
+repository = 'rhysd/vim-operator-surround'
+depends = 'kana/vim-operator-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'bronson/vim-trailing-whitespace'
+on_cmd = 'FixWhitespace'
+
+[[plugins]]
+repository = 'PreserveNoEOL'
+on_cmd = ['PreserveNoEOL', 'SetNoEOL']
+
+[[plugins]]
+repository = 'benjifisher/matchit.zip'
+on_map = [['nxo', '%', 'g%']]
+
+[[plugins]]
+repository = 'thinca/vim-fontzoom'
+gui = 1
+on_map = '<Plug>'

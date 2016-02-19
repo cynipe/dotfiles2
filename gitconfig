@@ -1,0 +1,106 @@
+[user]
+  name = cynipe
+  email = cynipe@gmail.com
+
+[color]
+  ui = auto
+
+[include]
+  path = ~/.gitconfig.local
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+  quotepath = false
+
+[branch]
+  autosetuprebase = always
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
+
+[merge]
+  tool = vimdiff
+  ff = false
+
+[alias]
+  d  = diff
+  co = checkout
+  st = status -sb
+  stat = status
+  ci = commit -v
+  br = branch
+  pick = cherry-pick
+  # see http://stackoverflow.com/a/18987047/4384040 for date format
+  l = log --graph --date=short --pretty='format:[%<(18,trunc)%ci%x08%x08] %C(yellow)%h%Cblue%d%Creset %s %C(green)%an %Creset'
+  ll = log
+  ld = log -p
+  initialize = commit --allow-empty -m 'Initial commit'
+  empty = commit --allow-empty
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+  # rmコマンドを使わずに削除してしまったファイルをgit rmする
+  rmd = "!f() { git ls-files --deleted ; }; git rm `f`"
+  pl = sync
+  cynipe = !git config user.name cynipe && git config user.email cynipe@gmail.com
+  il = !"f() { curl https://www.gitignore.io/api/list; }; f"
+  ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+  o = browse-remote
+  or = "!f() { git browse-remote --rev $@; }; f"
+  ls = "!f() { git diff-tree --no-commit-id --name-only -r $@; }; f"
+  pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
+  up = pull --rebase --prune
+  bclean = "!f() { git branch --merged master | grep -v " master$" | xargs -I % git branch -d %;}; f"
+  start = "!f() { [ -z \"${1+x}\" ] && { echo 'Please, specify branch name.'; exit 1;}; [ -z \"${2+x}\" ] && { echo 'Please, specify PR title.'; exit 1;}; git checkout master && git up && git checkout -b $1 && git commit --allow-empty -m \"${2} 作業開始\" && git push -u origin $1; }; f"
+  done = "!f() { git checkout master && git up && git bclean; }; f"
+
+
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[tig "bind"]
+  generic = g move-first-line
+  generic = G move-last-line
+
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
+
+[ghq]
+  root = ~/src
+
+[browse-remote "github.com"]
+  top = https://{host}/{path}
+  ref = https://{host}/{path}/tree/{short_ref}
+  rev = https://{host}/{path}/commit/{commit}
+  file = "https://{host}/{path}/{file.directory? and :tree or :blob}/{short_rev}/{file}{lines && \"#L%s\" % lines.join(\"-\")}"
+
+[browse-remote "bitbucket.org"]
+  top = https://{host}/{path}
+  ref = https://{host}/{path}/src/?at={short_ref}
+  rev = https://{host}/{path}/commits/{commit}
+
+[gh]
+  autoUpdate = always
+  protocol = https
+
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
+[diff "need_nkf"]
+  textconv = nkf -w
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+
+[hub]
+  protocol = ssh

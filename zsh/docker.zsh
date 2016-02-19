@@ -1,0 +1,11 @@
+alias d='docker'
+alias dr='docker run --rm -it'
+alias dra='docker run --rm -it alpine sh'
+alias de='docker exec -it'
+alias drm='docker ps -qa | xargs docker rm'
+alias drmi='d images -q --filter "dangling=true" | xargs docker rmi'
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias dcs='docker-compose status'
+alias hadolint="docker run --rm -i lukasmartinelli/hadolint < $@"
+alias pry='docker run --rm -it cynipe/pry'
