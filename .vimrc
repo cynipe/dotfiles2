@@ -5,8 +5,9 @@ if &compatible
   set nocompatible
 endif
 
+let s:dotdir = fnamemodify(expand('%:p'), ':h')
 function! s:source_rc(path)
-  execute 'source' fnameescape(expand('~/src/dotfiles/vim/' . a:path))
+  execute 'source' fnameescape(s:dotdir . '/vim/' . a:path)
 endfunction
 
 let s:is_windows = has('win16') || has('win32') || has('win64')

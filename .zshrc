@@ -1,3 +1,4 @@
+ZPLUG_EXTERNAL=~/.zplugrc
 source ~/.zplug/zplug
 zplug check || zplug install
 zplug load

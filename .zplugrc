@@ -28,6 +28,8 @@ zplug 'github/hub', as:command, from:gh-r, do:'$(~/.zplug/repos/github/hub alias
 #zplug 'monochromegane/the_platinum_searcher', as:command, from:gh-r, of:pt_linux_386/pt, file:pt
 #zplug 'gongo/9t', as:command, from:gh-r
 
+zplug 'tstack/lnav', as:command, from:gh-r
+
 case ${OSTYPE} in
     darwin*)
         zplug 'plugins/osx', from:oh-my-zsh

@@ -1,11 +1,7 @@
 SHELL := $(shell which zsh)
-RC_FILES := $(wildcard *rc)
+DOT_FILES := $(shell ls -1d .*)
 
-links = $(RC_FILES) \
-	zsh \
-	gitconfig gitignore \
-	tmux.conf \
-	peco.json
+links = bin $(DOT_FILES)
 
 .PHONY: clean install update
 
@@ -18,25 +14,22 @@ sandbox: docker/run
 .PHONY: links $(links)
 links: $(links)
 $(links):
-	@test -h ~/.$@ || ln -sf $(CURDIR)/$@ ~/.$@
-	@ls -ld ~/.$@
+	@test -h ~/$@ || ln -sf $(CURDIR)/$@ ~/
+	@ls -ld ~/$@
 
 
 .PHONY: shell/install shell/update
-shell/install: ~/.zplug/zplug ~/.zplug/init.zsh
+shell/install: ~/.zplug/zplug
 	@echo Setting up SEHLL
 	echo $$SHELL | grep -q $(SHELL) || chsh -s $(SHELL)
 	$(SHELL) --version
 	-time ( source ~/.$(notdir $(SHELL))rc )
 
 shell/update:
-	$(SHELL) -c 'source ~/.zplug/zplug && zplug update --self'
+	@$(SHELL) -c 'source ~/.zplug/zplug && zplug update --self'
 
 ~/.zplug/zplug:
 	curl -sSLfo ~/.zplug/zplug --create-dirs https://git.io/zplug
-
-~/.zplug/init.zsh:
-	ln -sf $(CURDIR)/init.zplug.zsh $@
 
 
 .PHONY: docker/build docker/run

@@ -9,7 +9,7 @@
   path = ~/.gitconfig.local
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore.global
   editor = vim
   quotepath = false
 
