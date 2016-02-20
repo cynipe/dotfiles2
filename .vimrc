@@ -33,12 +33,12 @@ call neobundle#begin(expand('$CACHE/neobundle'))
 
 if neobundle#load_cache(
       \ expand('<sfile>'),
-      \ '~/src/dotfiles/neobundle.toml',
-      \ '~/src/dotfiles/neobundlelazy.toml')
+      \ '~/.vim/neobundle.toml',
+      \ '~/.vim/neobundlelazy.toml')
   NeoBundleFetch 'Shougo/neobundle.vim'
 
-  call neobundle#load_toml('~/src/dotfiles/vim/neobundle.toml')
-  call neobundle#load_toml('~/src/dotfiles/vim/neobundlelazy.toml', {'lazy' : 1})
+  call neobundle#load_toml('~/.vim/neobundle.toml')
+  call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy' : 1})
 
   NeoBundleSaveCache
 endif

@@ -53,15 +53,12 @@ if has('vim_starting') "{{{
   " Load neobundle.
   let s:neobundle_dir = finddir('neobundle.vim', '.;')
   if s:neobundle_dir != ''
-    execute 'set runtimepath^=' .
-          \ fnamemodify(s:neobundle_dir, ':p')
+    execute 'set runtimepath^=' . fnamemodify(s:neobundle_dir, ':p')
   elseif &runtimepath !~ '/neobundle.vim'
     let s:neobundle_dir = expand('$CACHE/neobundle').'/neobundle.vim'
 
     if !isdirectory(s:neobundle_dir)
-      execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
-            \ (exists('$http_proxy') ? 'https' : 'git'))
-            \ s:neobundle_dir
+      execute '!git clone https://github.com/Shougo/neobundle.vim.git' s:neobundle_dir
     endif
 
     execute 'set runtimepath^=' . s:neobundle_dir
