@@ -1,5 +1,5 @@
 SHELL := $(shell which zsh)
-DOT_FILES := $(shell ls -1d .* | grep -v .git)
+DOT_FILES := $(shell ls -1d .* | egrep -v '^.git$$')
 
 links = $(DOT_FILES)
 
