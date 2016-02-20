@@ -42,7 +42,7 @@ setopt inc_append_history
 
 [[ -f /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
 [[ -f ~/bin/direnv ]] && eval "$(direnv hook zsh)"
-[ -f ~/.zshrc.local ] && source ~/.zsrc.local
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 zplug check "mollifier/anyframe" && {
     bindkey '^r' anyframe-widget-put-history
