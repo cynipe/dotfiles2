@@ -33,20 +33,20 @@ if neobundle#tap('unite.vim') "{{{
         \ :<C-u>Unite outline
         \ -no-split -start-insert<CR>
 
-  let neobundle#hooks.on_source ='~/src/dotfiles/vim/plugins/unite.rc.vim'
+  let neobundle#hooks.on_source ='~/.vim/plugins/unite.rc.vim'
   call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('neocomplete.vim') && has('lua') "{{{
   let g:acp_enableAtStartup                           = 0
   let g:neocomplete#enable_at_startup                 = 1
-  let neobundle#hooks.on_source = '~/src/dotfiles/vim/plugins/neocomplete.rc.vim'
+  let neobundle#hooks.on_source = '~/.vim/plugins/neocomplete.rc.vim'
 
   call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('neosnippet.vim') "{{{
-  let neobundle#hooks.on_source = '~/src/dotfiles/vim/plugins/neosnippet.rc.vim'
+  let neobundle#hooks.on_source = '~/.vim/plugins/neosnippet.rc.vim'
 
   call neobundle#untap()
 endif "}}}
