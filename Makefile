@@ -1,7 +1,7 @@
 SHELL := $(shell which zsh)
 DOT_FILES := $(shell ls -1d .* | grep -v .git)
 
-links = bin $(DOT_FILES)
+links = $(DOT_FILES)
 
 .PHONY: clean install update
 

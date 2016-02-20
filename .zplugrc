@@ -16,6 +16,7 @@ zplug 'plugins/docker', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
 
 # custom scripts
+zplug "${DOTDIR:-~/src/dotfiles}/bin", as:command, from:local
 zplug '~/.zsh', of:'*.zsh', from:local, nice:10
 
 # git
