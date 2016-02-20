@@ -18,7 +18,6 @@ manpath=(${^manpath}(N-/^W))
 
 export LANG='en_US.UTF-8'
 export TERM='xterm-256color'
-export DOTDIR=$(cd -P "$( dirname "$(readlink ${(%):-%N})" )" && pwd )
 
 setopt no_beep
 

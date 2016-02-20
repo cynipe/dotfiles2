@@ -1,3 +1,5 @@
+DOTDIR=$(cd -P "$( dirname "$(readlink ${(%):-%N})" )" && pwd )
+
 # theme
 zplug 'mafredri/zsh-async'
 zplug 'sindresorhus/pure'
