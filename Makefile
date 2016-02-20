@@ -1,5 +1,5 @@
 SHELL := $(shell which zsh)
-DOT_FILES := $(shell ls -1d .*)
+DOT_FILES := $(shell ls -1d .* | grep -v .git)
 
 links = bin $(DOT_FILES)
 
