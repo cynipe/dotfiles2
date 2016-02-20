@@ -21,7 +21,8 @@ $(links):
 .PHONY: shell/install shell/update
 shell/install: ~/.zplug/zplug
 	@echo Setting up SEHLL
-	echo $$SHELL | grep -q $(SHELL) || chsh -s $(SHELL)
+	@(echo $$SHELL | grep -q $(SHELL) || chsh -s $(SHELL)) \
+		|| echo 'Failed to change login shell.'
 	$(SHELL) --version
 	-time ( source ~/.$(notdir $(SHELL))rc )
 
