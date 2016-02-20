@@ -7,7 +7,6 @@ zplug 'zsh-users/zsh-syntax-highlighting', nice:10
 # peco
 zplug 'peco/peco', as:command, from:gh-r \
     | zplug 'mollifier/anyframe'
-zplug '~/.zsh/plugins/anyframe.zsh', from:local, if:'type anyframe-init'
 
 zplug 'rupa/z', of:z.sh, nice:10
 zplug 'Tarrasch/zsh-bd', of:bd.zsh
@@ -17,8 +16,7 @@ zplug 'plugins/docker', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
 
 # custom scripts
-zplug '~/.zsh', of:'*.zsh', from:local
-zplug '~/src/dotfiles/bin', as:command, of:'*', from:local
+zplug '~/.zsh', of:'*.zsh', from:local, nice:10
 
 # git
 zplug 'plugins/git', from:oh-my-zsh

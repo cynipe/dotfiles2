@@ -1,7 +1,7 @@
 ZPLUG_EXTERNAL=~/.zplugrc
 source ~/.zplug/zplug
 zplug check || zplug install
-zplug load
+zplug load --verbose
 
 # PATH {{{
 EXT_PATH=
